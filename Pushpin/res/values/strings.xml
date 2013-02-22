@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Pushpin</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+	
+    <string-array name="pusharr">
+        <item>PushPin</item>
+        <item>About Us</item>
+        <item>Instructions</item>
+        <item>Add Friends</item>
+    </string-array>
+</resources>
