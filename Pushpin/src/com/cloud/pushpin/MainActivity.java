@@ -1,7 +1,6 @@
 package com.cloud.pushpin;
 
 
-import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -9,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -30,17 +30,26 @@ public class MainActivity extends FragmentActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		additemsonSpinner1();
-		locationManager = (LocationManager) this
+		//unnecessary because of google map method...
+/*		locationManager = (LocationManager) this
 				.getSystemService(Context.LOCATION_SERVICE);
 		locationListener = new MyLocationListener();
 		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
 				0, locationListener);
-		locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+		locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);*/
 		SupportMapFragment fm = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
 		mMap=fm.getMap();
-		System.out.println("got here");
+		mMap.setMyLocationEnabled(true);
+		additemsonSpinner1();
+		Location maploc=mMap.getMyLocation();
+		if(maploc!=null)
+		{
+		 maploc.getLongitude(); Toast.makeText( getBaseContext(),
+				  "Location changed: Lat: " + maploc.getLatitude() + " Lng: " +
+				  maploc.getLongitude(), Toast.LENGTH_SHORT).show();
+		}
 		
+		System.out.println("got here");
 	}
 	//populates the spinner
 	public void additemsonSpinner1()
@@ -52,8 +61,8 @@ public class MainActivity extends FragmentActivity {
 		adapter.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1 );
 		// Apply the adapter to the spinner
 		spinner1.setAdapter(adapter);
-
-		
+		//adds a listener for the option selected
+		spinner1.setOnItemSelectedListener(new SpinnerActivity(mMap));
 		
 	}
 	public class MyLocationListener implements LocationListener {
