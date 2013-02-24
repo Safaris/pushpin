@@ -76,7 +76,8 @@ public class MainActivity extends FragmentActivity {
 		spinner1.setAdapter(adapter);
 		//adds a listener for the option selected
 		Context context=getApplicationContext();
-		spinner1.setOnItemSelectedListener(new SpinnerActivity(mMap,context));
+		Context context2=this;
+		spinner1.setOnItemSelectedListener(new SpinnerActivity(mMap,context,context2));
 		
 	}
 	public class MyLocationListener implements LocationListener {
