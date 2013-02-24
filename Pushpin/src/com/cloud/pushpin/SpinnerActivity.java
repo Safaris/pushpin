@@ -1,6 +1,9 @@
 package com.cloud.pushpin;
 
+import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,12 +13,15 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class SpinnerActivity extends FragmentActivity implements OnItemSelectedListener {
+public class SpinnerActivity extends MainActivity implements OnItemSelectedListener {
 	GoogleMap map;
+	Context context;
 	//passes the map object
-	public SpinnerActivity(GoogleMap mapp)
+	
+	public SpinnerActivity(GoogleMap mapp,Context contextz)
 	{
 		map=mapp;
+		context=contextz;
 	}
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int pos,
@@ -38,6 +44,11 @@ public class SpinnerActivity extends FragmentActivity implements OnItemSelectedL
 				break;
 			//about us option selected
 			case 2:
+				//launches new activity
+				Intent intent=new Intent(this.context, aboutus.class)
+				 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
+				context.startActivity(intent);
+				
 				break;
 			//instructions
 			case 3:

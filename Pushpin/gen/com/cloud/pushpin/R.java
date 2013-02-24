@@ -134,21 +134,27 @@ containing a value of this type.
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
+        public static final int button1=0x7f040007;
         public static final int map=0x7f040005;
-        public static final int menu_settings=0x7f040006;
+        public static final int menu_settings=0x7f040008;
         public static final int none=0x7f040000;
         public static final int normal=0x7f040001;
         public static final int satellite=0x7f040002;
         public static final int spinner1=0x7f040004;
         public static final int terrain=0x7f040003;
+        public static final int textView1=0x7f040006;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
+        public static final int xml2=0x7f030001;
     }
     public static final class menu {
         public static final int activity_main=0x7f080000;
     }
     public static final class string {
+        public static final int aboutus=0x7f050010;
+        public static final int act1=0x7f05000e;
+        public static final int act2=0x7f05000f;
         public static final int app_name=0x7f05000b;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they

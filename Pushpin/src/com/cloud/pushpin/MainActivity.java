@@ -1,6 +1,7 @@
 package com.cloud.pushpin;
 
 
+import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -51,6 +52,18 @@ public class MainActivity extends FragmentActivity {
 		
 		System.out.println("got here");
 	}
+	
+	@Override
+	public void onPause()
+	{
+		super.onPause();
+	}
+	
+	@Override
+	public void onResume()
+	{
+		super.onResume();
+	}
 	//populates the spinner
 	public void additemsonSpinner1()
 	{
@@ -62,7 +75,8 @@ public class MainActivity extends FragmentActivity {
 		// Apply the adapter to the spinner
 		spinner1.setAdapter(adapter);
 		//adds a listener for the option selected
-		spinner1.setOnItemSelectedListener(new SpinnerActivity(mMap));
+		Context context=getApplicationContext();
+		spinner1.setOnItemSelectedListener(new SpinnerActivity(mMap,context));
 		
 	}
 	public class MyLocationListener implements LocationListener {
