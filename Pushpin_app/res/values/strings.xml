@@ -15,5 +15,10 @@
     <string name="act1">spinner</string>
     <string name="act2">aboutus</string>
     <string name="aboutus">PushPin is an application created by a group of students in a cloud class at TCNJ. It was used primarily as a learning experience for Android. The Creators are: Sean Safari, Eddie Spencer, Eric Palace, Jared Milburn, Marty Drag, and  Daniel Cahill. </string>
-    <string name="emessage">Enter a Messages</string>
+    <string name="emessage">Enter a Message</string>
+    <string name="acc">Enter your account name</string>
+    <string name="pass">Enter your Password</string>
+    <string name="cpass">Confirm your password</string>
+    <string name="acc2">Enter your account name</string>
+    <string name="pass2">Enter your password</string>
 </resources>
