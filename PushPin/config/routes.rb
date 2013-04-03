@@ -1,5 +1,6 @@
 PushPin::Application.routes.draw do
-  resources :users
+  post '/' => 'users#index', :defaults => {:format => 'json'}
+  resources :users #, :defaults => {:format => 'json'}
   root :to => 'users#index'
 
 
