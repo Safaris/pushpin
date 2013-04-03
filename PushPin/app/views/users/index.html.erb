@@ -8,6 +8,9 @@
     <th></th>
     <th></th>
   </tr>
+  <%= form_tag root_path, :method => :post do %>
+    <%= submit_tag :submit %>
+  <% end %>
 
 <% @users.each do |user| %>
   <tr>
