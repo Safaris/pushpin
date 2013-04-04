@@ -91,6 +91,9 @@ public class SpinnerActivity extends MainActivity implements
 				break;
 			//instructions
 			case 3:
+				Intent intent2=new Intent(this.context, instructions.class)
+				 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
+				context.startActivity(intent2);
 				break;
 			//add friends
 			case 4:

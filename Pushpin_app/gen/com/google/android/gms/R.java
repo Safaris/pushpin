@@ -11,20 +11,27 @@ public final class R {
 		public static final int terrain = 0x7f040003;
 		public static final int none = 0x7f040000;
 		public static final int satellite = 0x7f040002;
+		public static final int hybrid = 0x7f040004;
 		public static final int normal = 0x7f040001;
 	}
 	public static final class string {
-		public static final int common_google_play_services_update_text = 0x7f050008;
-		public static final int common_google_play_services_install_button = 0x7f050003;
 		public static final int common_google_play_services_install_title = 0x7f050000;
-		public static final int common_google_play_services_install_text_phone = 0x7f050001;
-		public static final int common_google_play_services_update_button = 0x7f05000a;
+		public static final int common_google_play_services_unsupported_title = 0x7f05000a;
 		public static final int common_google_play_services_enable_title = 0x7f050004;
 		public static final int common_google_play_services_install_text_tablet = 0x7f050002;
-		public static final int common_google_play_services_unknown_issue = 0x7f050009;
+		public static final int auth_client_availability_notification_title = 0x7f05000e;
+		public static final int common_signin_button_text_long = 0x7f05000d;
 		public static final int common_google_play_services_enable_button = 0x7f050006;
 		public static final int common_google_play_services_update_title = 0x7f050007;
+		public static final int auth_client_play_services_err_notification_msg = 0x7f05000f;
+		public static final int common_google_play_services_update_text = 0x7f050008;
+		public static final int common_google_play_services_install_button = 0x7f050003;
+		public static final int common_google_play_services_install_text_phone = 0x7f050001;
+		public static final int common_google_play_services_update_button = 0x7f05000c;
+		public static final int common_google_play_services_unknown_issue = 0x7f050009;
+		public static final int common_google_play_services_unsupported_text = 0x7f05000b;
 		public static final int common_google_play_services_enable_text = 0x7f050005;
+		public static final int auth_client_requested_by_msg = 0x7f050010;
 	}
 	public static final class styleable {
 		public static final int MapAttrs_uiCompass = 6;
