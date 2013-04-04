@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="aboutus_title">40dip</dimen>
+    <dimen name="aboutus_sections">25dip</dimen>
+</resources>

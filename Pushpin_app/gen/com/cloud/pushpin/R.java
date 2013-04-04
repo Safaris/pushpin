@@ -9,7 +9,7 @@ package com.cloud.pushpin;
 
 public final class R {
     public static final class array {
-        public static final int pusharr=0x7f060000;
+        public static final int pusharr=0x7f080000;
     }
     public static final class attr {
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
@@ -130,6 +130,15 @@ containing a value of this type.
          */
         public static final int zOrderOnTop=0x7f01000d;
     }
+    public static final class color {
+        public static final int background_color=0x7f060000;
+        public static final int text_color=0x7f060001;
+        public static final int text_color2=0x7f060002;
+    }
+    public static final class dimen {
+        public static final int aboutus_sections=0x7f070001;
+        public static final int aboutus_title=0x7f070000;
+    }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
         public static final int pushpin_launcher=0x7f020001;
@@ -160,15 +169,19 @@ containing a value of this type.
         public static final int xml2=0x7f030005;
     }
     public static final class menu {
-        public static final int activity_main=0x7f080000;
+        public static final int activity_main=0x7f0a0000;
     }
     public static final class string {
-        public static final int aboutus=0x7f050010;
-        public static final int acc=0x7f050012;
-        public static final int acc2=0x7f050015;
-        public static final int act1=0x7f05000e;
-        public static final int act2=0x7f05000f;
+        public static final int about_description=0x7f05001c;
+        public static final int aboutus=0x7f050013;
+        public static final int aboutus2=0x7f050014;
+        public static final int aboutus_title=0x7f050012;
+        public static final int acc=0x7f050016;
+        public static final int acc2=0x7f050019;
+        public static final int act1=0x7f050010;
+        public static final int act2=0x7f050011;
         public static final int app_name=0x7f05000b;
+        public static final int background_section=0x7f05000e;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=30] 
@@ -212,12 +225,14 @@ containing a value of this type.
         Google Play services (from Play Store) [CHAR LIMIT=40] 
          */
         public static final int common_google_play_services_update_title=0x7f050007;
-        public static final int cpass=0x7f050014;
-        public static final int emessage=0x7f050011;
+        public static final int cpass=0x7f050018;
+        public static final int done_button=0x7f05001b;
+        public static final int emessage=0x7f050015;
         public static final int hello_world=0x7f05000c;
         public static final int menu_settings=0x7f05000d;
-        public static final int pass=0x7f050013;
-        public static final int pass2=0x7f050016;
+        public static final int pass=0x7f050017;
+        public static final int pass2=0x7f05001a;
+        public static final int whoarewe_section=0x7f05000f;
     }
     public static final class style {
         /** 
@@ -241,11 +256,11 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f090001;
     }
     public static final class styleable {
         /** Attributes that can be used with a MapAttrs.

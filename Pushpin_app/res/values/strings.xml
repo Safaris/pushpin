@@ -12,13 +12,19 @@
         <item>Instructions</item>
         <item>Add Friends</item>
     </string-array>
+    <string name="background_section">Background</string>
+    <string name="whoarewe_section">Who are we?</string>
     <string name="act1">spinner</string>
     <string name="act2">aboutus</string>
-    <string name="aboutus">PushPin is an application created by a group of students in a cloud class at TCNJ. It was used primarily as a learning experience for Android. The Creators are: Sean Safari, Eddie Spencer, Eric Palace, Jared Milburn, Marty Drag, and  Daniel Cahill. </string>
+    <string name="aboutus_title">About Us</string>
+    <string name="aboutus">\nPushPin is an application created by a group of students in a cloud class at TCNJ. It was used primarily as a learning experience for Android.</string>
+    <string name="aboutus2">\nThe Creators are: Sean Safari, Eddie Spencer, Eric Palace, Jared Milburn, Marty Drag, and  Daniel Cahill.</string>
     <string name="emessage">Enter a Message</string>
     <string name="acc">Enter your account name</string>
     <string name="pass">Enter your Password</string>
     <string name="cpass">Confirm your password</string>
     <string name="acc2">Enter your account name</string>
     <string name="pass2">Enter your password</string>
+    <string name="done_button">Done</string>
+    <string name="about_description">About the Pushpin project</string>
 </resources>
