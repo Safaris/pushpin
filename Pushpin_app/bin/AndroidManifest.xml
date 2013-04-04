@@ -41,6 +41,15 @@
 
         </activity>
         
+          <activity 
+            android:label="@string/app_name"
+            android:name="com.cloud.pushpin.instructions">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+        
         <activity
             android:label="@string/app_name"
             android:name="com.cloud.pushpin.aboutus">
@@ -51,7 +60,7 @@
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="" />
+            android:value="AIzaSyABx5hkckb_V-gq7WJex5xMdXXziyjaBP0" />
     </application>
 
     <permission
