@@ -27,4 +27,6 @@
     <string name="pass2">Enter your password</string>
     <string name="done_button">Done</string>
     <string name="about_description">About the Pushpin project</string>
+    <string name="instructions_title">Instructions</string>
+    <string name="instructions">\nHere are the instructions for the app. It's still currently being built.</string>
 </resources>
