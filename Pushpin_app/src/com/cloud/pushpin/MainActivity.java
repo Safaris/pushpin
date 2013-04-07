@@ -42,6 +42,31 @@ public class MainActivity extends FragmentActivity {
 	
 	public void generate(View view) throws IOException 
 	{
+		//THIS CODE IS READY TO DEPLOY ONCE BOOLEANS CAN BE RETURNED BY SERVER
+		 /*Httpclass http=new Httpclass();
+		 boolean result=false;
+		 final EditText edit =  (EditText) findViewById(R.id.EditText01);
+		 final EditText edit2 =  (EditText) findViewById(R.id.message);
+		 String name=edit.toString();
+		 String pass=edit2.toString();
+		 if(name!="" && pass!="")
+		 {
+			 Map m=http.login(name, pass);
+		 }
+		 else{
+			 Toast.makeText( getBaseContext(),"No information entered!", Toast.LENGTH_SHORT).show();
+		 }
+		 result=m.get("boolean")
+		 if(result==true)
+		 {
+			 Intent intent = new Intent(this, MapActivity.class);
+			 startActivity(intent);
+		 }
+		 else
+		 {
+			 Toast.makeText( getBaseContext(),"Login information is incorrect!", Toast.LENGTH_SHORT).show();
+		 }*/
+		 
 		 Intent intent = new Intent(this, MapActivity.class);
 		 startActivity(intent);
 
@@ -66,10 +91,21 @@ public class MainActivity extends FragmentActivity {
              public void onClick(DialogInterface dialog, int id) {
             	 if(savedText2.getText().toString().trim().equals(savedText3.getText().toString().trim()))
             	 {
-            		 Toast.makeText( getBaseContext(),"Successfully made account", Toast.LENGTH_SHORT).show();
+            		 if(savedText2.getText().toString().trim().equals("")||savedText3.getText().toString().trim().equals(""))
+            			 Toast.makeText( getBaseContext(),"Please make sure account name and password fields are not blank", Toast.LENGTH_SHORT).show();
+            		 else
+            		 {
+            			 Httpclass test=new Httpclass();
+                		 boolean result=test.newlogin(savedText.getText().toString().trim(), savedText2.getText().toString().trim());
+                		 if(result==true)
+                			 Toast.makeText( getBaseContext(),"Successfully made account", Toast.LENGTH_SHORT).show();
+                		 else
+                			 Toast.makeText( getBaseContext(),"Failed to create account", Toast.LENGTH_SHORT).show();
+            		 }
             	 }
             	 else
             	 {
+            		
             		 Toast.makeText( getBaseContext(),"Passwords do not match.", Toast.LENGTH_SHORT).show();
             	 }
 
