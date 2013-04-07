@@ -157,8 +157,8 @@ containing a value of this type.
         public static final int satellite=0x7f040002;
         public static final int spinner1=0x7f040007;
         public static final int terrain=0x7f040003;
-        public static final int textView1=0x7f040009;
-        public static final int textView2=0x7f04000b;
+        public static final int textView1=0x7f04000b;
+        public static final int textView2=0x7f040009;
         public static final int textView3=0x7f04000e;
         public static final int textView4=0x7f04000f;
         public static final int textView5=0x7f040010;
@@ -234,6 +234,8 @@ containing a value of this type.
         public static final int done_button=0x7f05001b;
         public static final int emessage=0x7f050015;
         public static final int hello_world=0x7f05000c;
+        public static final int instructions=0x7f05001e;
+        public static final int instructions_title=0x7f05001d;
         public static final int menu_settings=0x7f05000d;
         public static final int pass=0x7f050017;
         public static final int pass2=0x7f05001a;
