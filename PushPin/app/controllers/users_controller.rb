@@ -20,7 +20,8 @@ class UsersController < ApplicationController
       format.json { render json: @user }
     end
   end
-
+#  def confimation
+ #   resgt
   # GET /users/new
   # GET /users/new.json
   def new
@@ -45,10 +46,10 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
+        format.json { render json: {created: true}} 
       else
         format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: {created: false}} 
       end
     end
   end

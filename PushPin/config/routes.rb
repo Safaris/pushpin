@@ -1,8 +1,8 @@
 PushPin::Application.routes.draw do
   post '/' => 'users#index', :defaults => {:format => 'json'}
-  resources :users #, :defaults => {:format => 'json'}
+  resources :users , :defaults => {:format => 'json'}
   root :to => 'users#index'
-
+  #post '/users/new' => 'users#confirmation', :defaults => {:format => 'json'}
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
