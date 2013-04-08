@@ -20,8 +20,7 @@ class UsersController < ApplicationController
       format.json { render json: @user }
     end
   end
-#  def confimation
- #   resgt
+
   # GET /users/new
   # GET /users/new.json
   def new
