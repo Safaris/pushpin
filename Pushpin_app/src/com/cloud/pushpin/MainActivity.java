@@ -2,12 +2,12 @@ package com.cloud.pushpin;
 
 
 import java.io.IOException;
+import java.util.Map;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -19,8 +19,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends FragmentActivity {
 	private LocationManager locationManager = null;
@@ -42,33 +40,35 @@ public class MainActivity extends FragmentActivity {
 	
 	public void generate(View view) throws IOException 
 	{
-		//THIS CODE IS READY TO DEPLOY ONCE BOOLEANS CAN BE RETURNED BY SERVER
-		 /*Httpclass http=new Httpclass();
+		
+		Httpclass http=new Httpclass();
+		 Map m;
+		 String sessionid;
 		 boolean result=false;
 		 final EditText edit =  (EditText) findViewById(R.id.EditText01);
 		 final EditText edit2 =  (EditText) findViewById(R.id.message);
-		 String name=edit.toString();
-		 String pass=edit2.toString();
-		 if(name!="" && pass!="")
+		 String name=edit.getText().toString().trim();
+		 String pass=edit2.getText().toString().trim();
+		 System.out.println("This is the name:" + name);
+		 if(name.equals("") || pass.equals(""))
 		 {
-			 Map m=http.login(name, pass);
-		 }
-		 else{
 			 Toast.makeText( getBaseContext(),"No information entered!", Toast.LENGTH_SHORT).show();
 		 }
-		 result=m.get("boolean")
-		 if(result==true)
-		 {
-			 Intent intent = new Intent(this, MapActivity.class);
-			 startActivity(intent);
+		 else{
+			 m=http.login(name, pass);
+			 result=(Boolean) m.get("boolean");
+			 if(result==true)
+			 {
+				 Intent intent = new Intent(this, MapActivity.class);
+				 startActivity(intent);
+			 }
+			 else
+			 {
+				 Toast.makeText( getBaseContext(),"Login information is incorrect!", Toast.LENGTH_SHORT).show();
+			 }
 		 }
-		 else
-		 {
-			 Toast.makeText( getBaseContext(),"Login information is incorrect!", Toast.LENGTH_SHORT).show();
-		 }*/
+	 
 		 
-		 Intent intent = new Intent(this, MapActivity.class);
-		 startActivity(intent);
 
 	}
 	

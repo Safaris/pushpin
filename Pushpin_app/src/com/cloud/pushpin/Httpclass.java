@@ -36,12 +36,11 @@ public class Httpclass {
 			 JSONObject json2= new JSONObject();
 			 json.put("username",name);
 			 json.put("password", pass);
-			 json2.put("user",json);
 			 
-			 StringEntity input = new StringEntity(json2.toString());
+			 StringEntity input = new StringEntity(json.toString());
 	    	 input.setContentType("application/json");
 	    	
-			 HttpPost httppost = new HttpPost("http://ec2-54-235-20-117.compute-1.amazonaws.com:3000/users/new");
+			 HttpPost httppost = new HttpPost("http://ec2-54-235-20-117.compute-1.amazonaws.com:3000/login");
 	            httppost.setEntity(input);
 	            HttpResponse response = httpclient.execute(httppost);
 	            BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
@@ -52,18 +51,15 @@ public class Httpclass {
 	            }
 	         
 	            Object obj=JSONValue.parse(content.toString());
-	            JSONArray finalResult=(JSONArray)obj;
-	            System.out.println(finalResult.get(0));
+	            System.out.println(content.toString());
+	            JSONObject finalResult=(JSONObject)obj;
 	            JSONObject json3 = (JSONObject)finalResult.get(0);
-	            System.out.println(json3.get("boolean"));
-	            if(json2.get("boolean").equals("true"))
-	            	result=true;
-	            else 
-	            	result=false;
-	            
+	            System.out.println(finalResult.get("logged_in"));
+	            System.out.println(finalResult.get("session_key"));
+	           
 	         
-	          m.put("boolean", result);
-	          m.put("sessionid", json3.get("sessionid"));
+	            m.put("boolean", finalResult.get("logged_in"));
+	         	m.put("sessionid", finalResult.get("session_key"));
 	          
 	          
 	           
