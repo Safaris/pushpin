@@ -12,6 +12,6 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id]=nil
     render json: {logged_out: true}
-    redirect_to root_path, :notice => 'Logged out.'
+    #redirect_to root_path, :notice => 'Logged out.'
   end
 end
