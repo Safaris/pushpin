@@ -3,6 +3,7 @@ PushPin::Application.routes.draw do
   resources :users , :defaults => {:format => 'json'}
   get 'logout' => 'sessions#destroy', :as => 'logout'
   get 'login' => 'sessions#new', :as => 'login'
+  post 'login' => 'sessions#create'
   resources :sessions, :except => [:index, :edit]
   root :to => 'users#index'
   #post '/users/new' => 'users#confirmation', :defaults => {:format => 'json'}
