@@ -10,16 +10,19 @@
         android:scaleType="center"
         android:background="#FFFFBB33"
         android:contentDescription="@string/app_name" /> -->
+
     <EditText
         android:id="@+id/message"
-        android:inputType="textEmailAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
-        android:layout_marginBottom="4dp"
-        android:hint="@string/emessage" />
+        android:layout_marginTop="16dp"
+        android:hint="@string/emessage"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/black" />
+
    <!--  <EditText
         android:id="@+id/password"
         android:inputType="textPassword"
