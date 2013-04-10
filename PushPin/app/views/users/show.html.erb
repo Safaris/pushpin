@@ -1,16 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%= form_for(@user) do |f| %>
+  <p id="notice"><%= notice %></p>
 
-<p>
+  <p>
   <b>Password digest:</b>
   <%= @user.password_digest %>
-</p>
+  </p>
 
-<p>
+  <p>
   <b>Username:</b>
   <%= @user.username %>
-</p>
+  </p>
 
+  <p>
+  <b>Lat:</b>
+  <%= @user.lat %>
+  </p>
 
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <p>
+  <b>Long:</b>
+  <%= @user.long %>
+  </p>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Back', users_path %>
+<% end %>
+  <%= form_tag pushpin_path, :method => :post do %>
+    <%= text_field_tag :lat %>
+    <%= text_field_tag :long %>
+    <%= submit_tag :submit %>
+  <% end %>
