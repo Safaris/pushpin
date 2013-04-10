@@ -4,6 +4,8 @@ PushPin::Application.routes.draw do
   get 'logout' => 'sessions#destroy', :as => 'logout'
   get 'login' => 'sessions#new', :as => 'login'
   post 'login' => 'sessions#create'
+  post 'pushpin' => 'pins#edit', :as => 'pushpin'
+  get 'pushpin' => 'users#show', :as => 'pushpin'
   resources :sessions, :except => [:index, :edit]
   root :to => 'users#index'
   #post '/users/new' => 'users#confirmation', :defaults => {:format => 'json'}
