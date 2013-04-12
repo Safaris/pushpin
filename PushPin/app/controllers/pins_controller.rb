@@ -1,4 +1,5 @@
 class PinsController < ApplicationController
+  before_filter :restrict_access
   def edit
     @user = User.find(session[:user_id])
     if(@user)

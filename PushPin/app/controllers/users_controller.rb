@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
+
   def index
     @users = User.all
 
@@ -41,6 +42,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    @user.create_api_key
 
     respond_to do |format|
       if @user.save
@@ -80,4 +82,5 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end
