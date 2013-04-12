@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render json: {created: true, access_token: @user.api_key.auth_token}} 
+        format.json { render json: {created: true, access_token: @user.api_key.access_token}} 
       else
         format.html { render action: "new" }
         format.json { render json: {created: false}} 
