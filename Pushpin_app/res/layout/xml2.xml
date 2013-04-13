@@ -75,14 +75,16 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/text_color2" />
 
-    </RelativeLayout>
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:onClick="finishact"
+            android:text="@string/done_button"
+            android:textColor="@color/grey" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="finishact"
-        android:text="@string/done_button"
-        android:textColor="@color/text_color" />
+    </RelativeLayout>
 
 </LinearLayout>

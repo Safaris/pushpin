@@ -29,7 +29,7 @@
             android:layout_alignParentLeft="true"
             android:onClick="finishact"
             android:text="@string/done_button"
-            android:textColor="@color/text_color" />
+            android:textColor="@color/grey" />
 
         <TextView
             android:id="@+id/textView1"
