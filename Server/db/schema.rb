@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130412015545) do
+ActiveRecord::Schema.define(:version => 20130413200831) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "access_token"
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(:version => 20130412015545) do
     t.datetime "updated_at",                                      :null => false
     t.decimal  "lat",             :precision => 15, :scale => 10
     t.decimal  "long",            :precision => 15, :scale => 10
+    t.string   "email"
+    t.string   "message"
   end
 
 end
