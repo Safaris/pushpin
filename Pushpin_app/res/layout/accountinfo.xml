@@ -53,7 +53,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/pass"
-        android:inputType="textPassword" 
+        android:inputType="textEmailAddress"
         android:textColor="@color/black"
         android:textCursorDrawable="@color/black" />
 
@@ -67,7 +67,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/cpass"
-        android:inputType="textPassword" 
+        android:inputType="textEmailAddress"
         android:textColor="@color/black"
         android:textCursorDrawable="@color/black" />
 
