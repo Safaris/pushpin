@@ -51,6 +51,7 @@ public class SpinnerActivity extends MainActivity implements
 				/*DialogFragment newFragment = new dialog();O
 			    newFragment.show(getSupportFragmentManager(), "missiles");
 				*/
+				 map.clear();
 				 AlertDialog.Builder builder = new AlertDialog.Builder(context2);
 				 LayoutInflater inflater = LayoutInflater.from(context);
 				 final View view1=inflater.inflate(R.layout.pushdialog, null);
