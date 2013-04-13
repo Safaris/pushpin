@@ -5,8 +5,9 @@ class PinsController < ApplicationController
     if(@user)
       @user.lat = params[:lat]
       @user.long = params[:long]
+      @user.message = params[:message]
       @user.save
-      render json: {lat: @user.lat, long: @user.long}
+      render json: {lat: @user.lat, long: @user.long, message: @user.message}
     else
       render json: {error: 'No User Found'}
     end
