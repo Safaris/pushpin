@@ -1,8 +1,11 @@
 package com.cloud.pushpin;
 
+import java.io.Serializable;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -25,8 +28,7 @@ public class MapActivity extends FragmentActivity {
 	private Spinner spinner1;
 	private boolean accountexist=false;
 	private boolean success=false;
-
-
+	private String access_token="";
 	// private LocationListener onLocationChange=null;
 	@Override
 	//creates the spinner and gps/network detection. Also locates the map
@@ -42,7 +44,9 @@ public class MapActivity extends FragmentActivity {
 		locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);*/
 		
 		
-	    
+	    Intent i=getIntent();
+	    access_token=(String)i.getSerializableExtra("access_token");
+	    System.out.println("INSIDE MAP SERIAL KEY" + access_token);
 		
 		SupportMapFragment fm = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
 		mMap=fm.getMap();
@@ -133,7 +137,7 @@ public class MapActivity extends FragmentActivity {
 		Context context=getApplicationContext();
 		Context context2=this;
 		
-		spinner1.setOnItemSelectedListener(new SpinnerActivity(mMap,context,context2));
+		spinner1.setOnItemSelectedListener(new SpinnerActivity(mMap,context,context2,access_token));
 		
 	}
 }

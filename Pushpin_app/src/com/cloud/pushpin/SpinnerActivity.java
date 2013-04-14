@@ -19,13 +19,15 @@ public class SpinnerActivity extends MainActivity implements
 		OnItemSelectedListener {
 	GoogleMap map;
 	Context context, context2;
+	private String access_token="";
 
 	// passes the map object
 
-	public SpinnerActivity(GoogleMap mapp, Context contextz, Context contextw) {
+	public SpinnerActivity(GoogleMap mapp, Context contextz, Context contextw,String access) {
 		map = mapp;
 		context = contextz;
 		context2 = contextw;
+		access_token=access;
 	}
 
 	@Override
@@ -64,6 +66,8 @@ public class SpinnerActivity extends MainActivity implements
 		             public void onClick(DialogInterface dialog, int id) {
 		            	Location loc=map.getMyLocation();
 		 				LatLng pos1=new LatLng(loc.getLatitude(),loc.getLongitude());
+		 				Httpclass http=new Httpclass();
+		 				http.pushpin(loc.getLatitude(), loc.getLongitude(), access_token,savedText.getText().toString().trim());
 		            	MarkerOptions mopt=new MarkerOptions();
 		 				mopt.position(pos1);
 		 				mopt.title(savedText.getText().toString().trim());

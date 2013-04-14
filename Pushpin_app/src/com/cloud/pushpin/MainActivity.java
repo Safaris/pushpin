@@ -59,7 +59,9 @@ public class MainActivity extends FragmentActivity {
 			if(result==true)
 			{
 				Intent intent = new Intent(this, MapActivity.class);
+				intent.putExtra("access_token", m.get("access_token").toString());
 				startActivity(intent);
+				finish(); 
 			}
 			else
 			{
@@ -74,6 +76,8 @@ public class MainActivity extends FragmentActivity {
 	{
 		Intent intent = new Intent(this, NewAccount.class);
 		startActivity(intent);
+		finish();
+		
 	}
 	
 

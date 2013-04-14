@@ -59,7 +59,7 @@ public class Httpclass {
 	           
 	         
 	            m.put("boolean", finalResult.get("logged_in"));
-	         	m.put("sessionid", finalResult.get("access_token"));
+	         	m.put("access_token", finalResult.get("access_token"));
 	          
 	          
 	           
@@ -119,7 +119,7 @@ public class Httpclass {
 		     System.out.println(finalResult.get("created"));
 		     System.out.println(finalResult.get("created"));
 		     m.put("boolean", finalResult.get("created"));
-	         m.put("sessionid", finalResult.get("access_token"));
+	         m.put("access_token", finalResult.get("access_token"));
 	           
 
 		 } catch (ClientProtocolException e) {
@@ -138,5 +138,52 @@ public class Httpclass {
 		return m;
 	}
 
+	public void pushpin(double lat, double longi,String access_token, String message)
+	{
+		try {
+			JSONObject json4= new JSONObject();
+            json4.put("lat", lat);
+            json4.put("long", longi);
+            json4.put("access_token", access_token);
+            json4.put("message", message);
+            System.out.println(json4);
+            StringEntity input2 = new StringEntity(json4.toString());
+    		input2.setContentType("application/json");
+    		
+            
+          
+
+            
+            HttpPost httppost2 = new HttpPost("http://ec2-54-235-20-117.compute-1.amazonaws.com:3000/pushpin");
+            httppost2.addHeader("Content-Type","application/json");
+    	    
+            httppost2.setEntity(input2);
+            HttpResponse response2 = httpclient.execute(httppost2);
+            BufferedReader rd2 = new BufferedReader(new InputStreamReader(response2.getEntity().getContent()));
+            StringBuilder content2 = new StringBuilder();
+            String line2;
+            while (null != (line2 = rd2.readLine()) ){
+                content2.append(line2);
+            }
+       
+        
+            
+            System.out.println(content2.toString());
+		    
+	           
+
+		 } catch (ClientProtocolException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+	         // When HttpClient instance is no longer needed,
+	         // shut down the connection manager to ensure
+	         // immediate deallocation of all system resources
+	         httpclient.getConnectionManager().shutdown();
+    }
+	}
 
 }
