@@ -31,4 +31,5 @@
     <string name="instructions">Here are the instructions for the app.</string>
     <string name="submit">Submit</string>
     <string name="cancel">Cancel</string>
+    <string name="email">Please enter your email address</string>
 </resources>

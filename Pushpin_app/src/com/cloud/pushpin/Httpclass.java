@@ -55,11 +55,11 @@ public class Httpclass {
 	            JSONObject finalResult=(JSONObject)obj;
 	            JSONObject json3 = (JSONObject)finalResult.get(0);
 	            System.out.println(finalResult.get("logged_in"));
-	            System.out.println(finalResult.get("session_key"));
+	            System.out.println(finalResult.get("access_token"));
 	           
 	         
 	            m.put("boolean", finalResult.get("logged_in"));
-	         	m.put("sessionid", finalResult.get("session_key"));
+	         	m.put("sessionid", finalResult.get("access_token"));
 	          
 	          
 	           
@@ -80,15 +80,16 @@ public class Httpclass {
 		return m;
 	}
 	
-	public boolean newlogin (String name, String pass)
+	public Map newlogin (String name, String pass, String email)
 	{
 		boolean result=false;
-		
+		Map m=new HashMap();
 		try {
 			 JSONObject json = new JSONObject();
 			 JSONObject json2= new JSONObject();
 			 json.put("username",name);
 			 json.put("password", pass);
+			 json.put("email", email);
 			 json2.put("user",json);
 			 
 			 HttpClient httpclient=new DefaultHttpClient();
@@ -116,10 +117,9 @@ public class Httpclass {
 		            //System.out.println(finalResult.get(0));
 		     JSONObject json3 = (JSONObject)finalResult.get(0);
 		     System.out.println(finalResult.get("created"));
-		     if(finalResult.get("created").equals(true))
-		     {
-		    	 result=true;
-		     }
+		     System.out.println(finalResult.get("created"));
+		     m.put("boolean", finalResult.get("created"));
+	         m.put("sessionid", finalResult.get("access_token"));
 	           
 
 		 } catch (ClientProtocolException e) {
@@ -135,7 +135,7 @@ public class Httpclass {
 	         httpclient.getConnectionManager().shutdown();
      }
 		
-		return result;
+		return m;
 	}
 
 

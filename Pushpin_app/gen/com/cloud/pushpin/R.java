@@ -146,25 +146,26 @@ containing a value of this type.
         public static final int pushpin_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int EditText01=0x7f04000d;
-        public static final int button1=0x7f040007;
-        public static final int button2=0x7f040008;
-        public static final int map=0x7f04000a;
-        public static final int menu_settings=0x7f040012;
+        public static final int EditText01=0x7f04000e;
+        public static final int button1=0x7f040008;
+        public static final int button2=0x7f040009;
+        public static final int email=0x7f040007;
+        public static final int map=0x7f04000b;
+        public static final int menu_settings=0x7f040013;
         public static final int message=0x7f040004;
         public static final int message1=0x7f040005;
         public static final int message2=0x7f040006;
         public static final int none=0x7f040000;
         public static final int normal=0x7f040001;
         public static final int satellite=0x7f040002;
-        public static final int spinner1=0x7f040009;
+        public static final int spinner1=0x7f04000a;
         public static final int terrain=0x7f040003;
-        public static final int textView1=0x7f04000c;
-        public static final int textView2=0x7f04000b;
-        public static final int textView3=0x7f04000e;
-        public static final int textView4=0x7f04000f;
-        public static final int textView5=0x7f040010;
-        public static final int textView6=0x7f040011;
+        public static final int textView1=0x7f04000d;
+        public static final int textView2=0x7f04000c;
+        public static final int textView3=0x7f04000f;
+        public static final int textView4=0x7f040010;
+        public static final int textView5=0x7f040011;
+        public static final int textView6=0x7f040012;
     }
     public static final class layout {
         public static final int accountinfo=0x7f030000;
@@ -235,6 +236,7 @@ containing a value of this type.
         public static final int common_google_play_services_update_title=0x7f050007;
         public static final int cpass=0x7f050018;
         public static final int done_button=0x7f05001b;
+        public static final int email=0x7f050021;
         public static final int emessage=0x7f050015;
         public static final int hello_world=0x7f05000c;
         public static final int instructions=0x7f05001e;

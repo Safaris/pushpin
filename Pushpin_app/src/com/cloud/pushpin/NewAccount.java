@@ -1,6 +1,9 @@
 package com.cloud.pushpin;
 
 import java.io.IOException;
+import java.util.Map;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -19,14 +22,18 @@ public class NewAccount extends FragmentActivity
 	
 	public void submit(View view) throws IOException 
 	{
-		
-		final EditText savedText =(EditText)view.findViewById(R.id.message);
-    	final EditText savedText2 =(EditText)view.findViewById(R.id.message1);
-    	final EditText savedText3 =(EditText)view.findViewById(R.id.message2);
+		Map m;
+		boolean result;
+		final EditText savedText =(EditText)findViewById(R.id.message);
+    	final EditText savedText2 =(EditText)findViewById(R.id.message1);
+    	final EditText savedText3 =(EditText)findViewById(R.id.message2);
+    	final EditText savedText4 =(EditText)findViewById(R.id.email);
     	
     	String name = savedText.getText().toString().trim();
+    	System.out.println(name);
     	String pass = savedText2.getText().toString().trim();
     	String repeatPass = savedText3.getText().toString().trim();
+    	String email=savedText4.getText().toString().trim();
     	
     	
     	if(name.equals("") || pass.equals("") || repeatPass.equals(""))
@@ -36,17 +43,31 @@ public class NewAccount extends FragmentActivity
     	
 		if(savedText2.getText().toString().trim().equals(savedText3.getText().toString().trim()))
 		{
-			if(savedText2.getText().toString().trim().equals("")||savedText3.getText().toString().trim().equals(""))
-				Toast.makeText( getBaseContext(),"Please make sure account name and password fields are not blank", Toast.LENGTH_SHORT).show();
+			if(email.equals(""))
+			{
+				Toast.makeText(getBaseContext(),"No email entered!", Toast.LENGTH_SHORT).show();
+			}
 			else
 			{
-				Httpclass test = new Httpclass();
-				boolean result = test.newlogin(savedText.getText().toString().trim(), savedText2.getText().toString().trim());
-				if(result == true)
-					Toast.makeText( getBaseContext(),"Successfully made account", Toast.LENGTH_SHORT).show();
+				if(savedText2.getText().toString().trim().equals("")||savedText3.getText().toString().trim().equals(""))
+					Toast.makeText( getBaseContext(),"Please make sure account name and password fields are not blank", Toast.LENGTH_SHORT).show();
 				else
-					Toast.makeText( getBaseContext(),"Failed to create account", Toast.LENGTH_SHORT).show();
+				{
+					Httpclass test = new Httpclass();
+					m = test.newlogin(savedText.getText().toString().trim(), savedText2.getText().toString().trim(),savedText4.getText().toString());
+					result=(Boolean)m.get("boolean");
+					if(result == true)
+					{
+						Toast.makeText( getBaseContext(),"Successfully made account", Toast.LENGTH_SHORT).show();
+						Intent intent = new Intent(this, MapActivity.class);
+						startActivity(intent);
+						finish();
+					}
+					else
+						Toast.makeText( getBaseContext(),"Failed to create account", Toast.LENGTH_SHORT).show();
+				}
 			}
+			
 		}
 		else
 		{
