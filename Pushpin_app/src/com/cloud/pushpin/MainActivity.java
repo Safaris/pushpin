@@ -3,16 +3,11 @@ package com.cloud.pushpin;
 
 import java.io.IOException;
 import java.util.Map;
-
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -39,85 +34,47 @@ public class MainActivity extends FragmentActivity {
 	}
 	
 	public void generate(View view) throws IOException 
-	{
-		
+	{		
 		Httpclass http=new Httpclass();
-		 Map m;
-		 String sessionid;
-		 boolean result=false;
-		 final EditText edit =  (EditText) findViewById(R.id.EditText01);
-		 final EditText edit2 =  (EditText) findViewById(R.id.message);
-		 String name=edit.getText().toString().trim();
-		 String pass=edit2.getText().toString().trim();
-		 System.out.println("This is the name:" + name);
-		 if(name.equals("") || pass.equals(""))
-		 {
-			 Toast.makeText( getBaseContext(),"No information entered!", Toast.LENGTH_SHORT).show();
-		 }
-		 else{
-			 m=http.login(name, pass);
-			 result=(Boolean) m.get("boolean");
-			 if(result==true)
-			 {
-				 Intent intent = new Intent(this, MapActivity.class);
-				 startActivity(intent);
-			 }
-			 else
-			 {
-				 Toast.makeText( getBaseContext(),"Login information is incorrect!", Toast.LENGTH_SHORT).show();
-			 }
-		 }
-	 
+		Map m;
+		String sessionid;
+		boolean result=false;
+		final EditText edit =  (EditText) findViewById(R.id.EditText01);
+		final EditText edit2 =  (EditText) findViewById(R.id.message);
+		String name=edit.getText().toString().trim();
+		String pass=edit2.getText().toString().trim();
+		
+		System.out.println("This is the name:" + name);
+		
+		if(name.equals("") || pass.equals(""))
+		{
+			Toast.makeText( getBaseContext(),"No information entered!", Toast.LENGTH_SHORT).show();
+		}
 		 
-
+		else
+		{
+			m=http.login(name, pass);
+			result=(Boolean) m.get("boolean");
+			
+			if(result==true)
+			{
+				Intent intent = new Intent(this, MapActivity.class);
+				startActivity(intent);
+			}
+			else
+			{
+				Toast.makeText( getBaseContext(),"Login information is incorrect!", Toast.LENGTH_SHORT).show();
+			}
+		}
+		
 	}
+	
 	
 	public void newacc(View view) throws IOException
 	{
-		final Context context=getApplicationContext();
-		final Context context2=this;
-		
-		 AlertDialog.Builder builder = new AlertDialog.Builder(context2);
-		 LayoutInflater inflater = LayoutInflater.from(context);
-		 final View view1=inflater.inflate(R.layout.accountinfo, null);
-    	 builder.setView(view1);
-    	 final EditText savedText =(EditText)view1.findViewById(R.id.message);
-    	 final EditText savedText2 =(EditText)view1.findViewById(R.id.message1);
-    	 final EditText savedText3 =(EditText)view1.findViewById(R.id.message2);
-    	 
-    	 builder.setMessage("Enter your new account information")
-         
-         .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
-             public void onClick(DialogInterface dialog, int id) {
-            	 if(savedText2.getText().toString().trim().equals(savedText3.getText().toString().trim()))
-            	 {
-            		 if(savedText2.getText().toString().trim().equals("")||savedText3.getText().toString().trim().equals(""))
-            			 Toast.makeText( getBaseContext(),"Please make sure account name and password fields are not blank", Toast.LENGTH_SHORT).show();
-            		 else
-            		 {
-            			 Httpclass test=new Httpclass();
-                		 boolean result=test.newlogin(savedText.getText().toString().trim(), savedText2.getText().toString().trim());
-                		 if(result==true)
-                			 Toast.makeText( getBaseContext(),"Successfully made account", Toast.LENGTH_SHORT).show();
-                		 else
-                			 Toast.makeText( getBaseContext(),"Failed to create account", Toast.LENGTH_SHORT).show();
-            		 }
-            	 }
-            	 else
-            	 {
-            		
-            		 Toast.makeText( getBaseContext(),"Passwords do not match.", Toast.LENGTH_SHORT).show();
-            	 }
-
-             }
-         })
-         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-             public void onClick(DialogInterface dialog, int id) {
-                 // User cancelled the dialog
-             }
-         });
-		 AlertDialog dialog = builder.create();
-		 dialog.show();
+		Intent intent = new Intent(this, NewAccount.class);
+		startActivity(intent);
 	}
+	
 
 }

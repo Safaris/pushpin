@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Pushpin</string>
+    <string name="app_name">PushPin</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
 	
@@ -29,4 +29,6 @@
     <string name="about_description">About the Pushpin project</string>
     <string name="instructions_title">Instructions</string>
     <string name="instructions">Here are the instructions for the app.</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
 </resources>

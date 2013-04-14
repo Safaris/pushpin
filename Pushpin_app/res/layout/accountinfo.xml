@@ -1,41 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="fill_parent"
     android:orientation="vertical" >
-
-    <!--
-         <ImageView
-        android:src="@drawable/header_logo"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:scaleType="center"
-        android:background="#FFFFBB33"
-        android:contentDescription="@string/app_name" />
-    -->
-
-
-    <!--
-         <EditText
-        android:id="@+id/password"
-        android:inputType="textPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="16dp"
-        android:fontFamily="sans-serif"
-        android:hint="@string/password" />
-    -->
 
     <EditText
         android:id="@+id/message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/acc"
@@ -47,28 +21,49 @@
         android:id="@+id/message1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginTop="16dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/message"
         android:ems="10"
         android:hint="@string/pass"
         android:inputType="textPassword"
         android:textColor="@color/black"
-        android:textCursorDrawable="@color/black" />
+        android:textCursorDrawable="@color/black" >
+
+        <requestFocus />
+    </EditText>
 
     <EditText
         android:id="@+id/message2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginTop="16dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/message1"
         android:ems="10"
         android:hint="@string/cpass"
         android:inputType="textPassword"
         android:textColor="@color/black"
         android:textCursorDrawable="@color/black" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="51dp"
+        android:onClick="cancel"
+        android:text="@string/cancel" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/message2"
+        android:layout_marginLeft="53dp"
+        android:layout_marginTop="48dp"
+        android:layout_toRightOf="@+id/button1"
+        android:onClick="submit"
+        android:text="@string/submit" />
+
+</RelativeLayout>
