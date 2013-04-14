@@ -1,18 +1,5 @@
 PushPin::Application.routes.draw do
-  resources :oauth_clients
-
-  match '/oauth/test_request',  :to => 'oauth#test_request',  :as => :test_request
-
-  match '/oauth/token',         :to => 'oauth#token',         :as => :token
-
-  match '/oauth/access_token',  :to => 'oauth#access_token',  :as => :access_token
-
-  match '/oauth/request_token', :to => 'oauth#request_token', :as => :request_token
-
-  match '/oauth/authorize',     :to => 'oauth#authorize',     :as => :authorize
-
-  match '/oauth',               :to => 'oauth#index',         :as => :oauth
-
+  resources :friendships
   post '/' => 'users#index', :defaults => {:format => 'json'}
   resources :users , :defaults => {:format => 'json'}
   get 'logout' => 'sessions#destroy', :as => 'logout'
@@ -20,6 +7,9 @@ PushPin::Application.routes.draw do
   post 'login' => 'sessions#create'
   post 'pushpin' => 'pins#edit', :as => 'pushpin'
   get 'pushpin' => 'users#show', :as => 'pushpin'
+  post 'add_friend' => 'friendships#create'
+  get 'friends' => 'friendships#show'
+  post 'remove_friend' => 'friendships#destroy'
   resources :sessions, :except => [:index, :edit]
   root :to => 'users#index'
   #post '/users/new' => 'users#confirmation', :defaults => {:format => 'json'}
