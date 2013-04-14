@@ -1,4 +1,5 @@
 class FriendshipsController < ApplicationController
+  before_filter :restrict_access
   # GET /friendships
   # GET /friendships.json
   def index

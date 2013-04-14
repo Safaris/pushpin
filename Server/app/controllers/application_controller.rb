@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
     access_key =  ApiKey.find_by_access_token(params[:access_token]) 
     if(access_key)
       session[:user_id] =  access_key.user.id
-
     end
   end
 end
