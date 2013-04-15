@@ -7,9 +7,9 @@ PushPin::Application.routes.draw do
   post 'login' => 'sessions#create'
   post 'pushpin' => 'pins#edit', :as => 'pushpin'
   get 'pushpin' => 'users#show', :as => 'pushpin'
-  post 'add_friend' => 'friendships#create'
-  get 'friends' => 'friendships#show'
-  post 'remove_friend' => 'friendships#destroy'
+  post 'add_friend' => 'friendships#create', :defaults => {:format => 'json'}
+  post 'friends' => 'friendships#show', :defaults => {:format => 'json'}
+  post 'remove_friend' => 'friendships#destroy', :defaults => {:format => 'json'}
   resources :sessions, :except => [:index, :edit]
   root :to => 'users#index'
   #post '/users/new' => 'users#confirmation', :defaults => {:format => 'json'}
