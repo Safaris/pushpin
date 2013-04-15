@@ -96,9 +96,9 @@ class FriendshipsController < ApplicationController
   def destroy
     @user=current_user
     friend=User.find_by_email(params[:email])
-    @friendship = @user.friendships.find(friend.id)
+    @friendship = @user.friendships.find_by_friend_id(friend.id)
     @friendship.destroy
-    @friendship = friend.friendships.find(@user.id)
+    @friendship = friend.friendships.find_by_friend_id(@user.id)
     @friendship.destroy
 
     respond_to do |format|
