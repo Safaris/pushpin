@@ -1,5 +1,7 @@
 package com.cloud.pushpin;
 
+import java.util.Map;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -8,6 +10,7 @@ import android.location.Location;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.EditText;
 
@@ -102,6 +105,43 @@ public class SpinnerActivity extends MainActivity implements
 				break;
 			//add friends
 			case 4:
+				AlertDialog.Builder builder2 = new AlertDialog.Builder(context2);
+				 LayoutInflater inflater2 = LayoutInflater.from(context);
+				 final View view2=inflater2.inflate(R.layout.frienddialog, null);
+		    	 builder2.setView(view2);
+		    	 final EditText savedText2 =(EditText)view2.findViewById(R.id.message);
+		    	
+		    	 builder2.setMessage("Enter your new friend's email address")
+		         
+		         .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+		             public void onClick(DialogInterface dialog, int id) {
+		            	String efriend=savedText2.getText().toString().trim();
+		 				Httpclass http=new Httpclass();
+		 				Map m;
+		 				m=http.addfriend(access_token, efriend);
+		 				if(m.get("created").equals("true"))
+		 				{
+		 					Toast.makeText(context,"Added friends email", Toast.LENGTH_SHORT).show();
+		 				}
+		 				else if(m.get("exists").equals("false"))
+		 				{
+		 					Toast.makeText(context,"Email does not exist", Toast.LENGTH_SHORT).show();
+		 				}
+		 				else
+		 				{
+		 					Toast.makeText(context,"You are already friends!", Toast.LENGTH_SHORT).show();
+		 				}
+		                
+		             }
+		         })
+		         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		             public void onClick(DialogInterface dialog, int id) {
+		                 // User cancelled the dialog
+		             }
+		         });
+				 AlertDialog dialog2 = builder2.create();
+				 dialog2.show();
+			
 				break;
 			default:
 				break;

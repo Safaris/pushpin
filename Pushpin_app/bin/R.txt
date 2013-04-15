@@ -44,11 +44,12 @@ int id textView5 0x7f040011
 int id textView6 0x7f040012
 int layout accountinfo 0x7f030000
 int layout activity_main 0x7f030001
-int layout hasaccount 0x7f030002
-int layout instructions 0x7f030003
-int layout mainxml 0x7f030004
-int layout pushdialog 0x7f030005
-int layout xml2 0x7f030006
+int layout frienddialog 0x7f030002
+int layout hasaccount 0x7f030003
+int layout instructions 0x7f030004
+int layout mainxml 0x7f030005
+int layout pushdialog 0x7f030006
+int layout xml2 0x7f030007
 int menu activity_main 0x7f0a0000
 int string about_description 0x7f05001c
 int string aboutus 0x7f050013
@@ -76,6 +77,7 @@ int string cpass 0x7f050018
 int string done_button 0x7f05001b
 int string email 0x7f050021
 int string emessage 0x7f050015
+int string friend 0x7f050022
 int string hello_world 0x7f05000c
 int string instructions 0x7f05001e
 int string instructions_title 0x7f05001d

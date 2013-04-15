@@ -32,4 +32,5 @@
     <string name="submit">Submit</string>
     <string name="cancel">Cancel</string>
     <string name="email">Please enter your email address</string>
+    <string name="friend">Enter the email of the friend</string>
 </resources>

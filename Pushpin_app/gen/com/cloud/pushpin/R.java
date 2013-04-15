@@ -170,11 +170,12 @@ containing a value of this type.
     public static final class layout {
         public static final int accountinfo=0x7f030000;
         public static final int activity_main=0x7f030001;
-        public static final int hasaccount=0x7f030002;
-        public static final int instructions=0x7f030003;
-        public static final int mainxml=0x7f030004;
-        public static final int pushdialog=0x7f030005;
-        public static final int xml2=0x7f030006;
+        public static final int frienddialog=0x7f030002;
+        public static final int hasaccount=0x7f030003;
+        public static final int instructions=0x7f030004;
+        public static final int mainxml=0x7f030005;
+        public static final int pushdialog=0x7f030006;
+        public static final int xml2=0x7f030007;
     }
     public static final class menu {
         public static final int activity_main=0x7f0a0000;
@@ -238,6 +239,7 @@ containing a value of this type.
         public static final int done_button=0x7f05001b;
         public static final int email=0x7f050021;
         public static final int emessage=0x7f050015;
+        public static final int friend=0x7f050022;
         public static final int hello_world=0x7f05000c;
         public static final int instructions=0x7f05001e;
         public static final int instructions_title=0x7f05001d;
