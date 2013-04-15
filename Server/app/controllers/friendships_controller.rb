@@ -14,9 +14,10 @@ class FriendshipsController < ApplicationController
   # GET /friendships/1
   # GET /friendships/1.json
   def show
+    @user=current_user
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: current_user.friendships.friend}
+      format.json { render json: @user.friends}
     end
   end
 
@@ -39,23 +40,38 @@ class FriendshipsController < ApplicationController
   # POST /friendships
   # POST /friendships.json
   def create
+    @user=current_user
     friend=User.find_by_email(params[:email])
-    @friendship = current_user.friendships.build(:friend_id => friend.id)
+    #make sure the friend exists
+    if(friend)
+      #Check to see if the friendship already exists
+      friendCheck=Friendship.find_by_user_id_and_friend_id(@user.id, friend.id)
+      if(!friendCheck)
+        #If there is no friendship between the two users, continue as normal
+        @friendship = @user.friendships.build(:friend_id => friend.id)
 
-    respond_to do |format|
-      if @friendship.save
-        @friendship=friend.friendships.build(:friend_id => current_user.id)
-        if @friendship.save
-          format.html { redirect_to @friendship, notice: 'Friendship was successfully created.' }
-          format.json { render json: {:created => 'True'}}
-        else
-          format.html { render action: "new" }
-          format.json { render json: {:created => 'False'}}
+        respond_to do |format|
+          if @friendship.save
+            @friendship=friend.friendships.build(:friend_id => @user.id)
+            if @friendship.save
+              format.html { redirect_to @friendship, notice: 'Friendship was successfully created.' }
+              format.json { render json: {:created => 'true', :exists => 'true', :friends => 'false'}}
+            else
+              format.html { render action: "new" }
+              format.json { render json: {:created => 'False', :friends => 'false', :exists => 'true'}}
+            end
+          else
+            format.html { render action: "new" }
+            format.json { render json: {:created => 'False', :friends => 'false', :exists => 'true'}}
+          end
         end
       else
-        format.html { render action: "new" }
-        format.json { render json: {:created => 'False'}}
+        #If the friendship exist, return this fact to the app. It will notify the user.
+        render json: {:friends => 'true', :exists => 'true', :created => 'false'}
       end
+    else
+      #If the user does not exist, let the app know.
+      render json: {:friends => 'false', :exists => 'false', :created => 'false'}
     end
   end
 
@@ -78,10 +94,11 @@ class FriendshipsController < ApplicationController
   # DELETE /friendships/1
   # DELETE /friendships/1.json
   def destroy
+    @user=current_user
     friend=User.find_by_email(params[:email])
-    @friendship = current_user.friendships.find(friend.id)
+    @friendship = @user.friendships.find(friend.id)
     @friendship.destroy
-    @friendship = friend.friendships.find(current_user.id)
+    @friendship = friend.friendships.find(@user.id)
     @friendship.destroy
 
     respond_to do |format|
