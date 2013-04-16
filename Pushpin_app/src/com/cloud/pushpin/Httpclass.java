@@ -262,7 +262,7 @@ public class Httpclass {
           
 
             
-            HttpPost httppost2 = new HttpPost("http://ec2-54-235-20-117.compute-1.amazonaws.com:3000/add_friend");
+            HttpPost httppost2 = new HttpPost("http://ec2-54-235-20-117.compute-1.amazonaws.com:3000/friends");
             httppost2.addHeader("Content-Type","application/json");
     	    
             httppost2.setEntity(input2);
@@ -276,10 +276,9 @@ public class Httpclass {
             
             Object obj2=JSONValue.parse(content2.toString());
             JSONArray finalResult2=(JSONArray)obj2;
-            System.out.println(finalResult2);
-            System.out.println(finalResult2.get(0));
+           
             arr=finalResult2;
-            System.out.println(content2.toString());
+           
 		    
 	           
 
@@ -332,7 +331,7 @@ public class Httpclass {
 		            //System.out.println(finalResult.get(0));
 		     JSONObject json3 = (JSONObject)finalResult.get(0);
 		     System.out.println(finalResult.get("created"));
-		     if(finalResult.get("created").equals("true")) 
+		     if(finalResult.get("deleted").equals("true")) 
 		     {
 		    	 result=true;
 		     }
