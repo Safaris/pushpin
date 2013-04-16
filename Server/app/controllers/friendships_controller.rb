@@ -58,11 +58,11 @@ class FriendshipsController < ApplicationController
               format.json { render json: {:created => 'true', :exists => 'true', :friends => 'false'}}
             else
               format.html { render action: "new" }
-              format.json { render json: {:created => 'False', :friends => 'false', :exists => 'true'}}
+              format.json { render json: {:created => 'false', :friends => 'false', :exists => 'true'}}
             end
           else
             format.html { render action: "new" }
-            format.json { render json: {:created => 'False', :friends => 'false', :exists => 'true'}}
+            format.json { render json: {:created => 'false', :friends => 'false', :exists => 'true'}}
           end
         end
       else
@@ -96,14 +96,19 @@ class FriendshipsController < ApplicationController
   def destroy
     @user=current_user
     friend=User.find_by_email(params[:email])
-    @friendship = @user.friendships.find_by_friend_id(friend.id)
-    @friendship.destroy
-    @friendship = friend.friendships.find_by_friend_id(@user.id)
-    @friendship.destroy
+    if(friend)
+      friendCheck=Friendship.find_by_user_id_and_friend_id(@user.id, friend.id)
+      if(friendCheck)
+          @friendship = @user.friendships.find_by_friend_id(friend.id)
+          @friendship.destroy
+          @friendship = friend.friendships.find_by_friend_id(@user.id)
+          @friendship.destroy
+      end
+    end
 
     respond_to do |format|
       format.html { redirect_to root_url }
-      format.json { render json: {:deleted => 'True'}}
+      format.json { render json: {:deleted => 'true'}}
     end
   end
 end
