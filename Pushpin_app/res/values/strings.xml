@@ -28,7 +28,7 @@
     <string name="done_button">Done</string>
     <string name="about_description">About the Pushpin project</string>
     <string name="instructions_title">Instructions</string>
-    <string name="instructions">Here are the instructions for the app.</string>
+    <string name="instructions">Use the drop down menu to add friends. To add a friend, enter their email address.\n\nTo push a pin, select \"PushPin\" from the drop down menu, enter the text you want to display, and press \"OK\".</string>
     <string name="submit">Submit</string>
     <string name="cancel">Cancel</string>
     <string name="email">Please enter your email address</string>
