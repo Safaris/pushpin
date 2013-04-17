@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Pushpin</string>
+    <string name="app_name">PushPin</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
 	
@@ -28,5 +28,9 @@
     <string name="done_button">Done</string>
     <string name="about_description">About the Pushpin project</string>
     <string name="instructions_title">Instructions</string>
-    <string name="instructions">\nHere are the instructions for the app. It's still currently being built.</string>
+    <string name="instructions">Use the drop down menu to add friends. To add a friend, enter their email address.\n\nTo push a pin, select \"PushPin\" from the drop down menu, enter the text you want to display, and press \"OK\".</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="email">Please enter your email address</string>
+    <string name="friend">Enter the email of the friend</string>
 </resources>

@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-public class instructions extends Activity{
+public class instructions extends Activity
+{
 	
 	//displays the about us info
-	public void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) 
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.instructions);
 /*		TextView t=new TextView(this); 

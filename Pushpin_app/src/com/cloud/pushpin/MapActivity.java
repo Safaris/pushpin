@@ -1,8 +1,12 @@
 package com.cloud.pushpin;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -17,6 +21,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapActivity extends FragmentActivity {
 	private LocationManager locationManager = null;
@@ -25,8 +31,7 @@ public class MapActivity extends FragmentActivity {
 	private Spinner spinner1;
 	private boolean accountexist=false;
 	private boolean success=false;
-
-
+	private String access_token="";
 	// private LocationListener onLocationChange=null;
 	@Override
 	//creates the spinner and gps/network detection. Also locates the map
@@ -42,7 +47,9 @@ public class MapActivity extends FragmentActivity {
 		locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);*/
 		
 		
-	    
+	    Intent i=getIntent();
+	    access_token=(String)i.getSerializableExtra("access_token");
+	    System.out.println("INSIDE MAP SERIAL KEY" + access_token);
 		
 		SupportMapFragment fm = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
 		mMap=fm.getMap();
@@ -59,7 +66,32 @@ public class MapActivity extends FragmentActivity {
 		}
 		
 		System.out.println("got here");
-		
+		System.out.println("loading pins");
+		Httpclass http=new Httpclass();
+		JSONArray arr=http.getfriends(access_token);
+		for(int x=0;x<arr.size();x++)
+		{
+			JSONObject json=(JSONObject)arr.get(x);
+			System.out.println(json);
+			System.out.println(json.get("username"));
+			if(json.get("lat")==null||json.get("long")==null)
+			{
+				System.out.println("null message");
+			}
+			else
+			{
+				double lat=Double.valueOf(json.get("lat").toString());
+				double longi=Double.valueOf(json.get("long").toString());
+				LatLng pos1=new LatLng(lat,longi);
+            	MarkerOptions mopt=new MarkerOptions();
+ 				mopt.position(pos1);
+ 				if(json.get("message").toString()!="null")
+ 					mopt.title(json.get("message").toString());
+ 				mopt.snippet(json.get("username").toString());
+				mopt.visible(true);
+				mMap.addMarker(mopt);
+			}
+		}
 		
 		
 	}
@@ -133,7 +165,7 @@ public class MapActivity extends FragmentActivity {
 		Context context=getApplicationContext();
 		Context context2=this;
 		
-		spinner1.setOnItemSelectedListener(new SpinnerActivity(mMap,context,context2));
+		spinner1.setOnItemSelectedListener(new SpinnerActivity(mMap,context,context2,access_token));
 		
 	}
 }

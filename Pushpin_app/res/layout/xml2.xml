@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
+    android:background="@color/white"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -19,7 +19,7 @@
             android:layout_marginTop="39dp"
             android:text="@string/background_section"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/text_color"
+            android:textColor="@color/black"
             android:textSize="@dimen/aboutus_sections" />
 
         <TextView
@@ -29,7 +29,7 @@
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/textView3"
             android:text="@string/aboutus"
-            android:textColor="@color/text_color2"
+            android:textColor="@color/black"
             android:typeface="normal" />
 
         <TextView
@@ -41,7 +41,7 @@
             android:layout_marginTop="19dp"
             android:text="@string/whoarewe_section"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/text_color"
+            android:textColor="@color/black"
             android:textSize="@dimen/aboutus_sections" />
 
         <TextView
@@ -52,7 +52,7 @@
             android:layout_centerHorizontal="true"
             android:text="@string/aboutus_title"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/text_color"
+            android:textColor="@color/black"
             android:textSize="@dimen/aboutus_title" />
 
         <TextView
@@ -63,7 +63,7 @@
             android:layout_centerHorizontal="true"
             android:text="@string/about_description"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/text_color2" />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/textView6"
@@ -73,7 +73,7 @@
             android:layout_below="@+id/textView4"
             android:text="@string/aboutus2"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/text_color2" />
+            android:textColor="@color/black" />
 
     </RelativeLayout>
 
@@ -83,6 +83,6 @@
         android:layout_height="wrap_content"
         android:onClick="finishact"
         android:text="@string/done_button"
-        android:textColor="@color/text_color" />
+        android:textColor="@color/grey" />
 
 </LinearLayout>
