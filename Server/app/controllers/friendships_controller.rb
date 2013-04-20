@@ -81,12 +81,12 @@ class FriendshipsController < ApplicationController
       friendShip=Friendship.find_by_user_id_and_friend_id(@user.id, friend.id)
       if(friendShip)
         #If there is no friendship between the two users, continue as normal
-        friendShip.type='Confirmed'
+        friendShip.type='ConfirmedFriendship'
         respond_to do |format|
-          if @friendship.save
+          if friendShip.save
             friendShip=Friendship.find_by_user_id_and_friend_id(friend.id, @user.id)
-            friendShip.type='Confirmed'
-            if @friendship.save
+            friendShip.type='ConfirmedFriendship'
+            if friendShip.save
               format.html { redirect_to @user, notice: 'Friendship was successfully created.' }
               format.json { render json: {:created => 'true', :exists => 'true', :friends => 'false'}}
             else

@@ -12,8 +12,8 @@
     <%for friendship in @user.friendships %>
       <li>
       <%=h friendship.friend.username %>
-      <% if friendship.type=="Pending" %>
-        (<i><%= friendship.type %></i>)
+      <% if friendship.type=="PendingFriendship" %>
+        (<i>Pending</i>)
       <% end %>
       </li>
     <% end %>
