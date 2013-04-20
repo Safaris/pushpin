@@ -8,6 +8,6 @@ class UserMailer < ActionMailer::Base
   def confirmation_email(user,friend)
     @user=user
     @friend=friend
-    mail(:to => friend.email, :subject => "You have a friend request on PushPin!"
+    mail(:to => friend.email, :subject => "You have a friend request on PushPin!")
   end
 end
