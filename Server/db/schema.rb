@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(:version => 20130420031241) do
   create_table "friendships", :force => true do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
-    t.string   "type",       :default => "Pending"
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+    t.string   "type",       :default => "PendingFriendship"
   end
 
   create_table "users", :force => true do |t|
