@@ -24,22 +24,6 @@ class FriendshipsController < ApplicationController
   # GET /friendships/new
   # GET /friendships/new.json
   def new
-    @friendship = Friendship.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @friendship }
-    end
-  end
-
-  # GET /friendships/1/edit
-  def edit
-    @friendship = Friendship.find(params[:id])
-  end
-
-  # POST /friendships
-  # POST /friendships.json
-  def create
     @user=current_user
     friend=User.find_by_email(params[:email])
     #make sure the friend exists
@@ -54,6 +38,7 @@ class FriendshipsController < ApplicationController
           if @friendship.save
             @friendship=friend.friendships.build(:friend_id => @user.id)
             if @friendship.save
+              UserMailer.confirmation_email(@user,friend).deliver
               format.html { redirect_to @friendship, notice: 'Friendship was successfully created.' }
               format.json { render json: {:created => 'true', :exists => 'true', :friends => 'false'}}
             else
@@ -61,8 +46,7 @@ class FriendshipsController < ApplicationController
               format.json { render json: {:created => 'false', :friends => 'false', :exists => 'true'}}
             end
           else
-            format.html { render action: "new" }
-            format.json { render json: {:created => 'false', :friends => 'false', :exists => 'true'}}
+            render json: {:created => 'false', :friends => 'false', :exists => 'true'}
           end
         end
       else
@@ -72,6 +56,61 @@ class FriendshipsController < ApplicationController
     else
       #If the user does not exist, let the app know.
       render json: {:friends => 'false', :exists => 'false', :created => 'false'}
+    end
+    #@friendship = Friendship.new
+
+    #respond_to do |format|
+      #format.html # new.html.erb
+      #format.json { render json: @friendship }
+    #end
+  end
+
+  # GET /friendships/1/edit
+  def edit
+    @friendship = Friendship.find(params[:id])
+  end
+
+  # POST /friendships
+  # POST /friendships.json
+  def create
+    @user=User.find(params[:uid])
+    friend=User.find(params[:fid])
+    #make sure the friend exists
+    if(friend && @user)
+      #Check to see if the friendship already exists
+      friendShip=Friendship.find_by_user_id_and_friend_id(@user.id, friend.id)
+      if(friendShip)
+        #If there is no friendship between the two users, continue as normal
+        friendShip.type='ConfirmedFriendship'
+        respond_to do |format|
+          if friendShip.save
+            friendShip=Friendship.find_by_user_id_and_friend_id(friend.id, @user.id)
+            friendShip.type='ConfirmedFriendship'
+            if friendShip.save
+              format.html { redirect_to @user, notice: 'Friendship was successfully created.' }
+              format.json { render json: {:created => 'true', :exists => 'true', :friends => 'false'}}
+            else
+              format.html { redirect_to @user, notice: 'Something went wrong!'}
+              format.json { render json: {:created => 'false', :friends => 'false', :exists => 'true'}}
+            end
+          else
+            format.html { redirect_to @user, notice: 'Something went wrong!'}
+            format.json {render json: {:friends => 'false', :exists => 'false', :created => 'false'}}
+          end
+        end
+      else
+        #If the friendship exist, return this fact to the app. It will notify the user.
+        respond_to do |format|
+          format.html { redirect_to @user, notice: 'Something went wrong! According to our records, this friendship was never requested!'}
+          format.json {render json: {:friends => 'false', :exists => 'false', :created => 'false'}}
+        end
+      end
+    else
+      #If the user does not exist, let the app know.
+      respond_to do |format|
+        format.html { redirect_to @user, notice: 'Something went wrong! According to our records, you do not exist!'}
+        format.json {render json: {:friends => 'false', :exists => 'false', :created => 'false'}}
+      end
     end
   end
 

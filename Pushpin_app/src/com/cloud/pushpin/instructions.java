@@ -8,7 +8,7 @@ import android.view.View;
 public class instructions extends Activity
 {
 	
-	//displays the about us info
+	//displays the instructions info
 	public void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);

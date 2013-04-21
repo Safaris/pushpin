@@ -20,7 +20,7 @@ public class NewAccount extends FragmentActivity implements Serializable
 		setContentView(R.layout.accountinfo);
 	}
 	
-	
+	//submits info to be created
 	public void submit(View view) throws IOException 
 	{
 		Map m;
@@ -36,18 +36,19 @@ public class NewAccount extends FragmentActivity implements Serializable
     	String repeatPass = savedText3.getText().toString().trim();
     	String email=savedText4.getText().toString().trim();
     	
-    	
+    	//checks to make sure the user has entered info
     	if(name.equals("") || pass.equals("") || repeatPass.equals(""))
 		{
     		Toast.makeText(getBaseContext(),"No information entered!", Toast.LENGTH_SHORT).show();
 		}
-    	
+    	//checks to make sure there has been an email entered
 		if(savedText2.getText().toString().trim().equals(savedText3.getText().toString().trim()))
 		{
 			if(email.equals(""))
 			{
 				Toast.makeText(getBaseContext(),"No email entered!", Toast.LENGTH_SHORT).show();
 			}
+			//if email entered, checks against blank password/account name fields
 			else
 			{
 				if(savedText2.getText().toString().trim().equals("")||savedText3.getText().toString().trim().equals(""))
@@ -74,12 +75,13 @@ public class NewAccount extends FragmentActivity implements Serializable
 			}
 			
 		}
+		//makes sure passwords are a match
 		else
 		{
 			Toast.makeText( getBaseContext(),"Passwords do not match.", Toast.LENGTH_SHORT).show();
 		} 
 	}
-	
+	//returns to login screen
 	public void cancel(View view) throws IOException
 	{
 		Intent intent = new Intent(this, MainActivity.class);

@@ -2,29 +2,24 @@
   <p id="notice"><%= notice %></p>
 
   <p>
-  <b>Password digest:</b>
-  <%= @user.password_digest %>
-  </p>
-
   <p>
   <b>Username:</b>
   <%= @user.username %>
   </p>
+  <p> We hope you are enjoying PushPin</p>
+  <b>Friends:</b>
+  <ul>
+    <%for friendship in @user.friendships %>
+      <li>
+      <%=h friendship.friend.username %>
+      <% if friendship.type=="PendingFriendship" %>
+        (<i>Pending</i>)
+      <% end %>
+      </li>
+    <% end %>
+  </ul>
 
   <p>
-  <b>Lat:</b>
-  <%= @user.lat %>
-  </p>
-
-  <p>
-  <b>Long:</b>
-  <%= @user.long %>
-  </p>
   <%= link_to 'Edit', edit_user_path(@user) %> |
   <%= link_to 'Back', users_path %>
 <% end %>
-  <%= form_tag pushpin_path, :method => :post do %>
-    <%= text_field_tag :lat %>
-    <%= text_field_tag :long %>
-    <%= submit_tag :submit %>
-  <% end %>

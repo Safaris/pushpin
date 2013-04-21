@@ -22,11 +22,12 @@ import org.json.simple.JSONValue;
 public class Httpclass {
 	private HttpClient httpclient;
 
+	//creates the httpclient
 	public Httpclass(){
 		httpclient=new DefaultHttpClient();
 
 	}
-	
+	//try to login the user
 	public Map login (String name, String pass)
 	{
 		Map m=new HashMap();
@@ -34,12 +35,13 @@ public class Httpclass {
 			 boolean result=false;
 			 JSONObject json = new JSONObject();
 			 JSONObject json2= new JSONObject();
+			 //uses username and password entered by user in MainActivity class
 			 json.put("username",name);
 			 json.put("password", pass);
 			 
 			 StringEntity input = new StringEntity(json.toString());
 	    	 input.setContentType("application/json");
-	    	
+	    	//connects to the server
 			 HttpPost httppost = new HttpPost("http://ec2-54-235-20-117.compute-1.amazonaws.com:3000/login");
 	            httppost.setEntity(input);
 	            HttpResponse response = httpclient.execute(httppost);
@@ -57,7 +59,8 @@ public class Httpclass {
 	            System.out.println(finalResult.get("logged_in"));
 	            System.out.println(finalResult.get("access_token"));
 	           
-	         
+	            //returns whether or not the user successfully logged in. If they failed, access token will
+	            //be null
 	            m.put("boolean", finalResult.get("logged_in"));
 	         	m.put("access_token", finalResult.get("access_token"));
 	          
@@ -79,7 +82,7 @@ public class Httpclass {
 		
 		return m;
 	}
-	
+	//generate a new account
 	public Map newlogin (String name, String pass, String email)
 	{
 		boolean result=false;
@@ -87,6 +90,7 @@ public class Httpclass {
 		try {
 			 JSONObject json = new JSONObject();
 			 JSONObject json2= new JSONObject();
+			 //use credentials entered by the user
 			 json.put("username",name);
 			 json.put("password", pass);
 			 json.put("email", email);
@@ -118,6 +122,7 @@ public class Httpclass {
 		     JSONObject json3 = (JSONObject)finalResult.get(0);
 		     System.out.println(finalResult.get("created"));
 		     System.out.println(finalResult.get("created"));
+		     //lets the rest of the program know whether or not login was successful
 		     m.put("boolean", finalResult.get("created"));
 	         m.put("access_token", finalResult.get("access_token"));
 	           
@@ -137,10 +142,11 @@ public class Httpclass {
 		
 		return m;
 	}
-
+	//push a pin
 	public void pushpin(double lat, double longi,String access_token, String message)
 	{
 		try {
+			//information about the pin
 			JSONObject json4= new JSONObject();
             json4.put("lat", lat);
             json4.put("long", longi);
@@ -186,11 +192,13 @@ public class Httpclass {
     }
 	
 	}
+	//add a new friend
 	public Map addfriend(String access_token, String email)
 	{
 		Map m=new HashMap();
 		try {
 			JSONObject json4= new JSONObject();
+			//friend must be added using email, the server will send a verification email.
             json4.put("email", email);
             json4.put("access_token", access_token);
             System.out.println(json4);
@@ -221,6 +229,7 @@ public class Httpclass {
 		     System.out.println(finalResult.get("created"));
 		     System.out.println(finalResult.get("exists"));
 		     System.out.println(finalResult.get("friends"));
+		     //return information about whether or not the friend was created, and why it might have failed
 		     m.put("friends", finalResult.get("friends"));
 	         m.put("exists", finalResult.get("exists"));
 	         m.put("created", finalResult.get("created"));
@@ -246,7 +255,7 @@ public class Httpclass {
 		return m;
 				
 	}
-	
+	//get a list of friends
 	public JSONArray getfriends(String access_token)
 	{
 		JSONArray arr=new JSONArray();
@@ -274,6 +283,7 @@ public class Httpclass {
                 content2.append(line2);
             }
             
+            //returns the array of JSONobjects, each containing friends
             Object obj2=JSONValue.parse(content2.toString());
             JSONArray finalResult2=(JSONArray)obj2;
            
@@ -297,7 +307,7 @@ public class Httpclass {
 		return arr;
 		
 	}
-	
+	//remove a friend, CURRENTLY NOT USED
 	public boolean removefriend(String email, String access_token)
 	{
 		boolean result=false;
