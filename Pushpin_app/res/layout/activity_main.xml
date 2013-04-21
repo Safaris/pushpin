@@ -1,34 +1,76 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MapActivity" >
 
-    <LinearLayout
+
+    <fragment
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/map"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:scrollbars="vertical" />
 
-        <LinearLayout
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RadioGroup
+            android:id="@+id/radio_group_list_selector"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:background="#80000000"
+            android:orientation="horizontal"
+            android:padding="4dp" >
+
+            <Button
+                android:id="@+id/button1"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="pushpin"
+                android:text="PushPin" />
+
+            <View
+                android:id="@+id/VerticalLine"
+                android:layout_width="1dip"
+                android:layout_height="match_parent"
+                android:background="#aaa" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="refresh"
+                android:text="Refresh" />
+
+            <View
+                android:id="@+id/VerticalLine"
+                android:layout_width="1dip"
+                android:layout_height="match_parent"
+                android:background="#aaa" />
+
+            <View
+                android:id="@+id/VerticalLine"
+                android:layout_width="1dip"
+                android:layout_height="match_parent"
+                android:background="#aaa" />
 
             <Spinner
                 android:id="@+id/spinner1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </RadioGroup>
 
-        </LinearLayout>
+    </RelativeLayout>
+   
+</FrameLayout>
 
-    </LinearLayout>
 
-    <fragment
-       
-        android:id="@+id/map"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        class="com.google.android.gms.maps.SupportMapFragment" />
-
-</LinearLayout>
+        

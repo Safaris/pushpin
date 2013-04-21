@@ -32,7 +32,7 @@ public class MainActivity extends FragmentActivity {
 		setContentView(R.layout.mainxml);
 		
 	}
-	
+	//login detection for an already existing user
 	public void generate(View view) throws IOException 
 	{		
 		Httpclass http=new Httpclass();
@@ -45,7 +45,7 @@ public class MainActivity extends FragmentActivity {
 		String pass=edit2.getText().toString().trim();
 		
 		System.out.println("This is the name:" + name);
-		
+		//checks to make sure the user has entered information
 		if(name.equals("") || pass.equals(""))
 		{
 			Toast.makeText( getBaseContext(),"No information entered!", Toast.LENGTH_SHORT).show();
@@ -55,7 +55,7 @@ public class MainActivity extends FragmentActivity {
 		{
 			m=http.login(name, pass);
 			result=(Boolean) m.get("boolean");
-			
+			//if credentials valid, starts the app
 			if(result==true)
 			{
 				Intent intent = new Intent(this, MapActivity.class);
@@ -63,6 +63,7 @@ public class MainActivity extends FragmentActivity {
 				startActivity(intent);
 				finish(); 
 			}
+			//if credentials are invalid, alerts the user.
 			else
 			{
 				Toast.makeText( getBaseContext(),"Login information is incorrect!", Toast.LENGTH_SHORT).show();
@@ -71,7 +72,7 @@ public class MainActivity extends FragmentActivity {
 		
 	}
 	
-	
+	//if the user wants to make a new account, generates a new activity
 	public void newacc(View view) throws IOException
 	{
 		Intent intent = new Intent(this, NewAccount.class);
