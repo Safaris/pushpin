@@ -4,11 +4,15 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
+    <!-- Using the erb tags to personalize the email a bit. --!>
     <h3>Dear <%= @friend.username %>, <%= @user.username %> has requested to be your friend on PushPin!</h3>
     <p>
+    <!-- Lettnig the user know how to confirm the friendship, or that it's ok to ignor it. --!>
     Please click the link below to confirm the friendship. If you don't know this person, feel free to ignore this email.
     </p>
     <p>
+    <!-- Formattting the url. The link to the server is hardcoded in, then the ids are added with the more variable erb tags.
+    And we user a href so you don't have to actually see the ugle URL. --!>
     <a href="http://54.235.20.117:3000/confirm_friendship?uid=<%= @friend.id %>&fid=<%= @user.id %>">Confirm your friendship!</a>
     </p>
   </body>
