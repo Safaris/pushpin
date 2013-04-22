@@ -36,7 +36,7 @@ public class Listfriends extends ListActivity implements Serializable{
 		}
 		//alert the user if they have no friends
 		if(listItems.isEmpty()==true)
-			listItems.add("You have no friends the moment.");
+			listItems.add("You have no friends at the moment.");
 		
 		adapter=new ArrayAdapter<String>(this,
 			           android.R.layout.simple_list_item_1,

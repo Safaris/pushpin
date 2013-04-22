@@ -219,8 +219,8 @@ public class MapActivity extends FragmentActivity {
  				mopt.position(pos1);
  				mopt.title(savedText.getText().toString().trim());
 				mopt.visible(true);
-				String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
-				mopt.snippet(currentDateTimeString);
+				/*String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+				mopt.snippet(currentDateTimeString);*/
 				mark=mopt;
 				made=true;
 				mMap.addMarker(mopt);
