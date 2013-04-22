@@ -27,6 +27,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 public class MapActivity extends FragmentActivity {
 	private LocationManager locationManager = null;
 	private LocationListener locationListener = null;
@@ -216,6 +219,8 @@ public class MapActivity extends FragmentActivity {
  				mopt.position(pos1);
  				mopt.title(savedText.getText().toString().trim());
 				mopt.visible(true);
+				String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+				mopt.snippet(currentDateTimeString);
 				mark=mopt;
 				made=true;
 				mMap.addMarker(mopt);
