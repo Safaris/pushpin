@@ -7,10 +7,11 @@
 	
     <string-array name="pusharr">
         <item>Select option</item>
-        <item>PushPin</item>
+        <item>Logout</item>
         <item>About Us</item>
         <item>Instructions</item>
         <item>Add Friends</item>
+        <item>List Friends</item>
     </string-array>
     <string name="background_section">Background</string>
     <string name="whoarewe_section">Who are we?</string>
@@ -28,7 +29,7 @@
     <string name="done_button">Done</string>
     <string name="about_description">About the Pushpin project</string>
     <string name="instructions_title">Instructions</string>
-    <string name="instructions">Use the drop down menu to add friends. To add a friend, enter their email address.\n\nTo push a pin, select \"PushPin\" from the drop down menu, enter the text you want to display, and press \"OK\".</string>
+    <string name="instructions">Use the drop down menu to add friends. To add a friend, enter their email address.\n\nTo push a pin, select \"PushPin\" button, enter the text you want to display, and press \"OK\". \n \n When you add a new friend, a verification email will be sent for them to accept. \n \n The refresh map button will allow you to refresh the map to display any new pins.</string>
     <string name="submit">Submit</string>
     <string name="cancel">Cancel</string>
     <string name="email">Please enter your email address</string>

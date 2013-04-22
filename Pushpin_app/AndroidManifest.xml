@@ -14,6 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
+            android:windowSoftInputMode="adjustPan"
             android:name="com.cloud.pushpin.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
@@ -22,6 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+     
         
         <activity 
             android:label="@string/app_name"
@@ -33,6 +36,7 @@
         </activity>
         
          <activity 
+             android:windowSoftInputMode="adjustPan"
             android:label="@string/app_name"
             android:name="com.cloud.pushpin.MapActivity">
             <intent-filter>
@@ -41,7 +45,18 @@
 
         </activity>
         
+        <activity 
+          
+            android:label="@string/app_name"
+            android:name="com.cloud.pushpin.Listfriends">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+        
           <activity 
+              android:windowSoftInputMode="adjustPan"
             android:label="@string/app_name"
             android:name="com.cloud.pushpin.instructions">
             <intent-filter>
@@ -51,6 +66,7 @@
         </activity>
         
         <activity 
+            android:windowSoftInputMode="adjustPan"
             android:label="@string/app_name"
             android:name="com.cloud.pushpin.NewAccount">
             <intent-filter>
@@ -60,6 +76,7 @@
         </activity>
         
         <activity
+            android:windowSoftInputMode="adjustPan"
             android:label="@string/app_name"
             android:name="com.cloud.pushpin.aboutus">
             <intent-filter>
