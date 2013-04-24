@@ -60,7 +60,7 @@ class UsersController < ApplicationController
         #If user was not successfully created, send back a JSON to the app
         #with the error message and the created flag set to false
         format.html { render action: "new" }
-        format.json { render json: {created: false, @user.errors.full_messages}} 
+        format.json { render json: {created: false, error: @user.errors.full_messages}} 
       end
     end
   end
