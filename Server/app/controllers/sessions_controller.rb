@@ -7,6 +7,9 @@ class SessionsController < ApplicationController
     #Make sure the user exists, then make sure the passwords match.
     #The order of this if expression (and the use of && instead of and is VERY important)
     if(user && user.authenticate(params[:password]))
+      #Set the session userid to the user's id. This will make logging in
+      #viable on a web front
+      session[:user_id]=user.id
       #Return the users access token to the app. The app will pass it with requests which need to be logged in for.
       render json: {logged_in: true, access_token: user.api_key.access_token}
     else

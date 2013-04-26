@@ -46,22 +46,30 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(params[:user])
-    #Attempt to save the new user, finilazing creation
-    respond_to do |format|
-      if @user.save
-        #If user was successfully created, create an access token for them,
-        #send them a welcom email, and return the needed information to the app.
-        @user.create_api_key
-        UserMailer.welcome_email(@user).deliver
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render json: {created: true, access_token: @user.api_key.access_token}} 
-      else
-        #If user was not successfully created, send back a JSON to the app
-        #with the error message and the created flag set to false
-        format.html { render action: "new" }
-        format.json { render json: {created: false, error: @user.errors.full_messages}} 
+    #check to see if there is a user already registered with the provided email.
+    userCheck=User.find_by_email(params[:email])
+    #If there is no suck user, do everything as normal
+    if(!userCheck)
+      @user = User.new(params[:user])
+      #Attempt to save the new user, finilazing creation
+      respond_to do |format|
+        if @user.save
+          #If user was successfully created, create an access token for them,
+          #send them a welcom email, and return the needed information to the app.
+          @user.create_api_key
+          UserMailer.welcome_email(@user).deliver
+          format.html { redirect_to @user, notice: 'User was successfully created.' }
+          format.json { render json: {created: true, exists: false, access_token: @user.api_key.access_token}} 
+        else
+          #If user was not successfully created, send back a JSON to the app
+          #with the error message and the created flag set to false
+          format.html { render action: "new" }
+          format.json { render json: {created: false, exists: false, error: @user.errors.full_messages}} 
+        end
       end
+    else
+      #If the email is already registered with an account, return a json to the app explaining this.
+      render json: {created: false, exists: true}
     end
   end
 
