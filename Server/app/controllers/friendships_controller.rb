@@ -95,6 +95,7 @@ class FriendshipsController < ApplicationController
             #The users will then show up on each others maps.
             #The logic for this is in the users model
             friendShip.type='ConfirmedFriendship'
+            session[:user_id]=@user.id
             if friendShip.save
               format.html { redirect_to @user, notice: 'Friendship was successfully created.' }
               format.json { render json: {:created => 'true', :exists => 'true', :friends => 'false'}}
