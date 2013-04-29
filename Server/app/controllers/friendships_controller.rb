@@ -97,7 +97,7 @@ class FriendshipsController < ApplicationController
             friendShip.type='ConfirmedFriendship'
             session[:user_id]=@user.id
             if friendShip.save
-              format.html { redirect_to @user, notice: 'Friendship was successfully created.' }
+              format.html { redirect_to "http://54.235.20.117:3000/users/#{@user.id}.html", notice: 'Friendship was successfully created.' }
               format.json { render json: {:created => 'true', :exists => 'true', :friends => 'false'}}
             else
               format.html { redirect_to @user, notice: 'Something went wrong!'}
